@@ -1,3 +1,20 @@
+html,
 body {
-  background-color: red;
+  margin: 0;
+}
+
+h1 {
+  background-color: grey;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+.css-inputFields {
+  padding: 20px, 0px;
+}
+
+.css-submitButton {
+  margin: 10px 0;
 }
