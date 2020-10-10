@@ -13,6 +13,7 @@ h1 {
 
 .css-inputFields {
   padding: 20px, 0px;
+  margin-left: 20px;
 }
 
 .css-submitButton {
@@ -21,11 +22,11 @@ h1 {
 
 .css-employeeDisplayList {
   border-collapse: collapse;
-  padding: 0px 10px;
+  margin-left: 20px;
+  table-layout: fixed;
 }
 
 .css-employeeDisplayList td {
-  padding: 6px 10px;
   border: 1px solid black;
-  border-collapse: collapse;
+  padding: 6px 15px;
 }
