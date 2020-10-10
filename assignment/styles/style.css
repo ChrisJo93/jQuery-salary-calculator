@@ -18,3 +18,13 @@ h1 {
 .css-submitButton {
   margin: 10px 0;
 }
+
+.css-employeeDisplayList {
+  border-collapse: collapse;
+  padding: 20px;
+}
+
+.css-employeeDisplayList td {
+  padding: 6px 10px;
+  border: 1px solid black;
+}
