@@ -23,11 +23,25 @@
     <h2 class="h2-employeeList">Employees</h2>
         <div class ="css-employeeList js-employeeList">
         <table>
-        <tr>First Name</tr>
-        <tr>Last Name</tr>
-        <tr>ID</tr>
-        <tr>Job Title</tr>
-        <tr>Annual Salary</tr>
+            <thead>
+        <tr>
+            <td>First Name </td>
+            <td>Last Name </td>
+            <td>ID</td> 
+            <td>Job</td> 
+            <td>Title</td> 
+            <td>Annual Salary</td>
+        </tr>
+    </thead>
+            <tbody class="js-employeeDisplayList css-employeeDisplayList"></tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4"></td>
+                    <td colspan="2">
+                    Total Compensation: <span class="js-totalCompensation">0</span>
+                </td>
+                </tr>
+            </tfoot>
         </table>
     </div>
     </body>
