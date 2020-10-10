@@ -24,6 +24,13 @@ function submitValues() {
   };
   employeeArray.push(employee); //storing employee object into an array
   employeeDisplay();
+  calculateCompensation(salary);
+}
+function calculateCompensation(salary) {
+  let total = 0;
+  let compensation = $('.js-totalCompensation');
+  total += salary;
+  compensation.text(salary);
 }
 
 function employeeDisplay() {
