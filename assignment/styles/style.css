@@ -21,10 +21,11 @@ h1 {
 
 .css-employeeDisplayList {
   border-collapse: collapse;
-  padding: 20px;
+  padding: 0px 10px;
 }
 
 .css-employeeDisplayList td {
   padding: 6px 10px;
   border: 1px solid black;
+  border-collapse: collapse;
 }

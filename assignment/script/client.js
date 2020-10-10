@@ -38,6 +38,7 @@ function employeeDisplay() {
       <td>${employeeItem.id}</td>
       <td>${employeeItem.job}</td>
       <td>${employeeItem.salary}</td>
+      <td></td>
       </tr>`
     );
   }
