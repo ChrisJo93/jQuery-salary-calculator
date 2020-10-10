@@ -29,6 +29,16 @@ function submitValues() {
 function employeeDisplay() {
   $('.js-employeeDisplayList').empty();
   for (let i = 0; i < employeeArray.length; i++) {
-    console.log(employeeArray[i]);
+    const employeeItem = employeeArray[i];
+
+    $('.js-employeeDisplayList').append(
+      `<tr>
+      <td>${employeeItem.firstName}</td>
+      <td>${employeeItem.lastName}</td>
+      <td>${employeeItem.id}</td>
+      <td>${employeeItem.job}</td>
+      <td>${employeeItem.salary}</td>
+      </tr>`
+    );
   }
 }
