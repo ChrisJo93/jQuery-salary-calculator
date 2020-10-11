@@ -28,7 +28,7 @@ function submitValues() {
   };
   employeeArray.push(employee); //storing employee object into an array
   employeeDisplay();
-  totalMonthly += parseInt(salary);
+  totalMonthly += Number(salary);
   calculateCompensation();
 }
 function calculateCompensation() {
@@ -36,13 +36,14 @@ function calculateCompensation() {
   let compensation = $('.js-totalCompensation');
   total = Number(totalMonthly / 12);
   compensation.empty();
-  compensation.text(parseInt(total)); //outputing whole number
+  let currency = total.toFixed(2).replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+  compensation.text('$' + currency); //outputing whole number
 
   if (total >= totalAllowed) {
     //turning text red if over 20,000
     compensation.css('color', 'crimson');
   } else {
-    compensation.css('background-color', 'white');
+    compensation.css('color', 'black');
   }
 }
 
@@ -56,7 +57,7 @@ function employeeDisplay() {
   $('.js-employeeDisplayList').empty();
   for (let i = 0; i < employeeArray.length; i++) {
     const employeeItem = employeeArray[i];
-
+    let currency = total.toFixed(2).replace(/(\d)(?=(\d{3})+$)/g, '$1,');
     $('.js-employeeDisplayList').append(
       //displaying all stored info to the dom
       `<tr>
