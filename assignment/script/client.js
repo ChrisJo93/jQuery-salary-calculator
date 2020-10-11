@@ -57,7 +57,8 @@ function employeeDisplay() {
   $('.js-employeeDisplayList').empty();
   for (let i = 0; i < employeeArray.length; i++) {
     const employeeItem = employeeArray[i];
-    let currency = total.toFixed(2).replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+    let salary = Number(employeeItem.salary);
+    let curr = salary.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, '$1,');
     $('.js-employeeDisplayList').append(
       //displaying all stored info to the dom
       `<tr>
@@ -65,7 +66,7 @@ function employeeDisplay() {
             <td>${employeeItem.lastName}</td>
             <td>${employeeItem.id}</td>
             <td>${employeeItem.job}</td>
-            <td>${employeeItem.salary}</td>
+            <td>$${curr}</td>
             <td><button class="deleteButton" data-delete=${i}>delete</button></td>
             </tr>`
     );
@@ -79,5 +80,4 @@ function deleteEmployee() {
   employeeArray.splice(toBeDeleted, 1);
   employeeDisplay();
   calculateCompensation();
-  console.log(total);
 }

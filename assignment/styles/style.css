@@ -3,6 +3,12 @@ body {
   margin: 0;
 }
 
+img {
+  width: 10px;
+  height: 20px;
+  margin-left: 500px;
+}
+
 h1 {
   background-color: grey;
   color: white;
