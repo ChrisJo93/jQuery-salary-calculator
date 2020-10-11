@@ -80,7 +80,7 @@ function deleteEmployee() {
 }
 
 function subtractValue(salary) {
-  let compensation = $('.js-totalCompensation');
+  let compensation = $('.js-totalCompensation'); //targeting compensation
   total -= Number(salary / 12);
   compensation.empty();
   compensation.text(parseInt(total)); //outputing whole number
