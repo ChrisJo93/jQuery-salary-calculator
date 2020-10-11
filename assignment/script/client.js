@@ -30,28 +30,22 @@ function submitValues() {
   calculateCompensation(employee.salary);
 }
 function calculateCompensation(salary) {
+  //using salary property to adjust total
   let compensation = $('.js-totalCompensation');
   total += Number(salary / 12);
   compensation.empty();
-  compensation.text(parseInt(total));
+  compensation.text(parseInt(total)); //outputing whole number
+
   if (total >= totalAllowed) {
+    //turning text red if over 20,000
     compensation.css('background-color', 'red').css('color', 'white');
   } else {
     compensation.css('background-color', 'white');
   }
 }
 
-function deleteEmployee(something) {
-  const items = $(this).data('delete');
-  employeeArray.splice(items, 1);
-  if (employeeArray.splice(items, 1)) {
-    total - something;
-    console.log('workign');
-  }
-  employeeDisplay();
-}
-
 function employeeDisplay() {
+  //clearing input fields after inputs are stored
   $('.js-firstNameInput').val('');
   $('.js-lastNameInput').val('');
   $('.js-idInput').val('');
@@ -62,14 +56,32 @@ function employeeDisplay() {
     const employeeItem = employeeArray[i];
 
     $('.js-employeeDisplayList').append(
+      //displaying all stored info to the dom
       `<tr>
             <td>${employeeItem.firstName}</td>
             <td>${employeeItem.lastName}</td>
             <td>${employeeItem.id}</td>
-      <td>${employeeItem.job}</td>
-      <td>${employeeItem.salary}</td>
-      <td><button class="deleteButton" data-delete=${i}>delete</button></td>
-      </tr>`
+            <td>${employeeItem.job}</td>
+            <td>${employeeItem.salary}</td>
+            <td><button class="deleteButton" data-delete=${i}>delete</button></td>
+            </tr>`
     );
   }
+}
+
+function deleteEmployee() {
+  //removing employee information from array
+  const items = $(this).data('delete');
+  employeeArray.splice(items, 1);
+  employeeDisplay();
+  for (let i = 0; i < employeeArray.length; i++) {
+    subtractValue(employeeArray[i].salary);
+  }
+}
+
+function subtractValue(salary) {
+  let compensation = $('.js-totalCompensation');
+  total -= Number(salary / 12);
+  compensation.empty();
+  compensation.text(parseInt(total)); //outputing whole number
 }
