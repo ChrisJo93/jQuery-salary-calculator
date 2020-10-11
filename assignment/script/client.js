@@ -1,9 +1,11 @@
 const employeeArray = [];
+let total = 0;
 
 $(document).ready(onReady);
 
 function onReady() {
   $('.js-submitButton').on('click', submitValues); //"connects button with input values function
+  $('.js-employeeDisplayList').on('click', '.deleteButton', deleteEmployee);
 }
 
 function submitValues() {
@@ -24,28 +26,42 @@ function submitValues() {
   };
   employeeArray.push(employee); //storing employee object into an array
   employeeDisplay();
-  calculateCompensation(salary);
+  calculateCompensation(employee.salary);
 }
 function calculateCompensation(salary) {
-  let total = 0;
   let compensation = $('.js-totalCompensation');
-  total += salary;
-  compensation.text(salary);
+  total += Number(salary / 12);
+  compensation.empty();
+  compensation.text(parseInt(total));
+  if (total >= 20000) {
+    compensation.css('background-color', 'red').css('color', 'white');
+  }
+}
+
+function deleteEmployee() {
+  const items = $(this).data('index');
+  employeeArray.splice(items, 1);
+  employeeDisplay();
 }
 
 function employeeDisplay() {
+  $('.js-firstNameInput').val('');
+  $('.js-lastNameInput').val('');
+  $('.js-idInput').val('');
+  $('.js-jobInput').val('');
+  $('.js-salaryInput').val('');
   $('.js-employeeDisplayList').empty();
   for (let i = 0; i < employeeArray.length; i++) {
     const employeeItem = employeeArray[i];
 
     $('.js-employeeDisplayList').append(
       `<tr>
-      <td>${employeeItem.firstName}</td>
-      <td>${employeeItem.lastName}</td>
-      <td>${employeeItem.id}</td>
+            <td>${employeeItem.firstName}</td>
+            <td>${employeeItem.lastName}</td>
+            <td>${employeeItem.id}</td>
       <td>${employeeItem.job}</td>
       <td>${employeeItem.salary}</td>
-      <td></td>
+      <td><button class="deleteButton" data-index=${i}>delete</button></td>
       </tr>`
     );
   }
