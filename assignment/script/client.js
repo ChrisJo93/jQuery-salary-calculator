@@ -38,7 +38,7 @@ function calculateCompensation(salary) {
 
   if (total >= totalAllowed) {
     //turning text red if over 20,000
-    compensation.css('background-color', 'red').css('color', 'white');
+    compensation.css('color', 'crimson');
   } else {
     compensation.css('background-color', 'white');
   }
@@ -71,17 +71,20 @@ function employeeDisplay() {
 
 function deleteEmployee() {
   //removing employee information from array
-  const items = $(this).data('delete');
-  employeeArray.splice(items, 1);
+  const toBeDeleted = $(this).data('delete');
+  employeeArray.splice(toBeDeleted, 1);
+
   employeeDisplay();
-  for (let i = 0; i < employeeArray.length; i++) {
-    subtractValue(employeeArray[i].salary);
-  }
+  //   for (let i = 0; i < employeeArray.length; i++) {
+  //     subtractValue(employeeArray[i].salary);
+  //     console.log(employeeArray[i].salary);
+  //   }
 }
 
-function subtractValue(salary) {
-  let compensation = $('.js-totalCompensation'); //targeting compensation
-  total -= Number(salary / 12);
-  compensation.empty();
-  compensation.text(parseInt(total)); //outputing whole number
-}
+// function subtractValue(salary) {
+//   let compensation = $('.js-totalCompensation'); //targeting compensation
+//   total -= number(compensation.text());
+//   console.log(compensation.text());
+//   compensation.empty();
+//   compensation.text(parseInt(total)); //outputing whole number
+// }
