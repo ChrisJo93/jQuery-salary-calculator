@@ -1,6 +1,7 @@
 const employeeArray = [];
 let total = 0;
 let totalAllowed = 20000;
+let totalMonthly = 0;
 
 $(document).ready(onReady);
 
@@ -27,12 +28,13 @@ function submitValues() {
   };
   employeeArray.push(employee); //storing employee object into an array
   employeeDisplay();
-  calculateCompensation(employee.salary);
+  totalMonthly += parseInt(salary);
+  calculateCompensation();
 }
-function calculateCompensation(salary) {
+function calculateCompensation() {
   //using salary property to adjust total
   let compensation = $('.js-totalCompensation');
-  total += Number(salary / 12);
+  total = Number(totalMonthly / 12);
   compensation.empty();
   compensation.text(parseInt(total)); //outputing whole number
 
@@ -70,21 +72,11 @@ function employeeDisplay() {
 }
 
 function deleteEmployee() {
-  //removing employee information from array
-  const toBeDeleted = $(this).data('delete');
+  //removing employee information from array on delete
+  let toBeDeleted = $(this).data('delete');
+  totalMonthly -= employeeArray[toBeDeleted].salary;
   employeeArray.splice(toBeDeleted, 1);
-
   employeeDisplay();
-  //   for (let i = 0; i < employeeArray.length; i++) {
-  //     subtractValue(employeeArray[i].salary);
-  //     console.log(employeeArray[i].salary);
-  //   }
+  calculateCompensation();
+  console.log(total);
 }
-
-// function subtractValue(salary) {
-//   let compensation = $('.js-totalCompensation'); //targeting compensation
-//   total -= number(compensation.text());
-//   console.log(compensation.text());
-//   compensation.empty();
-//   compensation.text(parseInt(total)); //outputing whole number
-// }
