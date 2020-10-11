@@ -1,5 +1,6 @@
 const employeeArray = [];
 let total = 0;
+let totalAllowed = 20000;
 
 $(document).ready(onReady);
 
@@ -33,14 +34,20 @@ function calculateCompensation(salary) {
   total += Number(salary / 12);
   compensation.empty();
   compensation.text(parseInt(total));
-  if (total >= 20000) {
+  if (total >= totalAllowed) {
     compensation.css('background-color', 'red').css('color', 'white');
+  } else {
+    compensation.css('background-color', 'white');
   }
 }
 
-function deleteEmployee() {
-  const items = $(this).data('index');
+function deleteEmployee(something) {
+  const items = $(this).data('delete');
   employeeArray.splice(items, 1);
+  if (employeeArray.splice(items, 1)) {
+    total - something;
+    console.log('workign');
+  }
   employeeDisplay();
 }
 
@@ -61,7 +68,7 @@ function employeeDisplay() {
             <td>${employeeItem.id}</td>
       <td>${employeeItem.job}</td>
       <td>${employeeItem.salary}</td>
-      <td><button class="deleteButton" data-index=${i}>delete</button></td>
+      <td><button class="deleteButton" data-delete=${i}>delete</button></td>
       </tr>`
     );
   }
